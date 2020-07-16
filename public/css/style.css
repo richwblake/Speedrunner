@@ -1,0 +1,14 @@
+html {
+    background-color: darkslategray;
+    width: 75%;
+    margin: auto;
+}
+
+#main-title {
+    margin: auto;
+    color: lightblue;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid lightblue;
+    padding: 5px;
+}
