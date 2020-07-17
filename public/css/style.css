@@ -12,3 +12,17 @@ html {
     border: 1px solid lightblue;
     padding: 5px;
 }
+
+#game-div {
+    background-color: black;
+    color: whitesmoke;
+    margin: 20px auto;
+    border: solid whitesmoke 1px;
+    text-align: center;
+    width: 50%;
+}
+
+#game-name {
+    margin-top: 0;
+    border-bottom: solid whitesmoke 1px;
+}

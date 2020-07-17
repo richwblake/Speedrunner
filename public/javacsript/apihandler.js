@@ -6,6 +6,5 @@ class APIHandler {
     fetchGame(url) {
         return fetch(`${this.url}/${url}`)
         .then(response => response.json())
-        .then(json => json)
     }
 }

@@ -1,19 +1,22 @@
+const api = new APIHandler;
 document.addEventListener("DOMContentLoaded", main())
 
 
 function main () {
-    const api = new APIHandler;
-    api.fetchGame("games/1")
-    .then(json => makeGameObjectFromJSON(json))
+    appendGameFromUrl("games/2");
+}
+
+function appendGameFromUrl(url) {
+    makeGameObjectFromFetch(url);
 }
 
 
-
-function makeGameObjectFromJSON(json) {
-    const game = new Game(json.name, json.category);
-    console.log(game)
+function makeGameObjectFromFetch(url) {
+    api.fetchGame(url)
+    .then(json => appendGameObject(new Game(json.name, json.category)));
 }
 
-function createGameDiv(game) {
-    
+function appendGameObject(game) {
+    const gameDivCard = game.createDivForGame;
+    document.body.appendChild(gameDivCard);
 }
