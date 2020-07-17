@@ -1,7 +1,6 @@
 const api = new APIHandler;
 document.addEventListener("DOMContentLoaded", main())
 
-
 function main () {
     appendGameFromUrl("games/2");
 }
@@ -9,7 +8,6 @@ function main () {
 function appendGameFromUrl(url) {
     makeGameObjectFromFetch(url);
 }
-
 
 function makeGameObjectFromFetch(url) {
     api.fetchGame(url)
