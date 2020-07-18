@@ -23,7 +23,7 @@ function setUpLandingPage() {
 function makeGameCreateButton() {
     let btn = document.createElement("button");
     btn.id = "create-game-btn";
-    btn.innerHTML = "Create A Game";
+    btn.innerHTML = "Create a Game";
     document.body.appendChild(btn);
 }
 

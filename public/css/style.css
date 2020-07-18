@@ -26,3 +26,11 @@ html {
     margin-top: 0;
     border-bottom: solid whitesmoke 1px;
 }
+
+#create-game-btn {
+    font-size: 15px;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    width: 30%;
+}
