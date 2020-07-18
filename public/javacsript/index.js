@@ -2,19 +2,33 @@ const api = new APIHandler;
 document.addEventListener("DOMContentLoaded", main())
 
 function main () {
-    appendGameFromUrl("games/2");
+    setUpLandingPage();
 }
 
-function appendGameFromUrl(url) {
-    makeGameObjectFromFetch(url);
+// call this function with a get request url to append a game in db to the DOM
+function setUpGameView(url) {
+    api.makeGameObjectFromFetch(url);
 }
 
-function makeGameObjectFromFetch(url) {
-    api.fetchGame(url)
-    .then(json => appendGameObject(new Game(json.name, json.category)));
+function removeCurrentGame() {
+    let currentGame = document.getElementById("game-div");
+    console.log(currentGame)
+    currentGame.parentElement.removeChild(currentGame);
 }
 
-function appendGameObject(game) {
-    const gameDivCard = game.createDivForGame;
-    document.body.appendChild(gameDivCard);
+function setUpLandingPage() {
+    makeGameCreateButton();
 }
+
+function makeGameCreateButton() {
+    let btn = document.createElement("button");
+    btn.id = "create-game-btn";
+    btn.innerHTML = "Create A Game";
+    document.body.appendChild(btn);
+}
+
+
+
+
+
+
