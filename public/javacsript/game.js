@@ -25,6 +25,7 @@ class Game {
     appendGameObject() {
         const gameDivCard = this.createDivForGame();
         document.body.appendChild(gameDivCard);
+        return this;
     }
 }
 
