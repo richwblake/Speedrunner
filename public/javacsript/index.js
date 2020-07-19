@@ -84,7 +84,25 @@ function makeGameForm() {
     gameForm.appendChild(categoryLabelField)
     gameForm.appendChild(categoryField);
     gameForm.appendChild(submitBtn);
+
+    listenForGameFormSubmit(gameForm);
 }
+
+//listens for post request for form. takes submit button of form in question
+function listenForGameFormSubmit(form) {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = event.target["game-form-name"].value;
+        const category = event.target["game-form-category"].value;
+        game = new Game(name, category);
+        
+        api.postGameData(game)
+        .then(data => data.json())
+        .then(json => game.appendGameObject())
+    })
+}
+
+
 
 
 

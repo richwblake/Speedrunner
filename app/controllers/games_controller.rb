@@ -6,8 +6,8 @@ class GamesController < ApplicationController
 
     def create
         game = Game.new()
-        game.name = params[:name][:name]
-        game.category = params[:name][:category]
+        game.name = params[:game][:name]
+        game.category = params[:game][:category]
         game.save!
         render json: game
     end
@@ -16,7 +16,7 @@ class GamesController < ApplicationController
 
     def game_parameters
         params.require(:game).permit(
-            name: [
+            game: [
                 :name,
                 :category
             ]
