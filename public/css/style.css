@@ -27,10 +27,26 @@ html {
     border-bottom: solid whitesmoke 1px;
 }
 
-#create-game-btn {
-    font-size: 15px;
+.game-form {
+    color: whitesmoke;
     display: block;
     margin: 10px auto;
     text-align: center;
-    width: 30%;
+}
+
+.game-form-input {
+    width: 150px;
+    height: 12px;
+    resize: none;
+    display: block;
+    margin: 10px auto;
+}
+
+.new-game-btn {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    color: black;
+    font-size: 15px;
+    width: 25%;
 }

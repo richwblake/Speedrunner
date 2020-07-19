@@ -23,26 +23,67 @@ function setUpLandingPage() {
 
 function makeGameCreateButton() {
     const btn = document.createElement("button");
-    btn.id = "create-game-btn";
+    btn.className = "new-game-btn";
+    btn.id = "new-game-btn"
     btn.innerHTML = "Create a Game";
     document.body.appendChild(btn);
     return btn;
 }
 
 function makeGameForm() {
-    gameFormDiv = document.createElement("div");
-    gameFormDiv.id = "game-form";
+    //create game form div
+    const gameFormDiv = document.createElement("div");
+    gameFormDiv.id = "game-form-div";
 
-    gameFormTitle = document.createElement("h3");
+    //create title for game form
+    const gameFormTitle = document.createElement("h2");
     gameFormTitle.id = "game-form-title";
-    gameFormTitle.innerHTML = "Create your game here"
+    gameFormTitle.className = "game-form"
+    gameFormTitle.innerHTML = "&#x2193 Create your game here &#x2193"
 
+    //create game form
+    const gameForm = document.createElement("form");
+    gameForm.id = "game-form";
+    gameForm.className = "game-form";
 
+    //create game title field and label
+    const nameField = document.createElement("textarea");
+    nameField.placeholder = "e.g. 'Bloodborne'"
+    nameField.id = "game-form-name";
+    nameField.className = "game-form-input"
 
+    const nameLabelField = document.createElement("label");
+    nameLabelField.id = "game-form-label";
+    nameLabelField.setAttribute("for", "game-form-name");
+    nameLabelField.innerHTML = "Name: "
+
+    //create game category field and label
+    const categoryField = document.createElement("textarea");
+    categoryField.placeholder = "e.g. 'Spooky'"
+    categoryField.id = "game-form-category";
+    categoryField.className = "game-form-input";
+
+    const categoryLabelField = document.createElement("label");
+    categoryLabelField.id = "category-form-label";
+    categoryLabelField.setAttribute("for", "game-form-category");
+    categoryLabelField.innerHTML = "Category: "
+
+    const submitBtn = document.createElement("button");
+    submitBtn.className = "new-game-btn";
+    submitBtn.innerHTML = "Create Game"
     
-    document.getElementById("create-game-btn").remove();
+    //remove landing page button
+    document.getElementById("new-game-btn").remove();
+
+    //append div to body and form to div. append form input elements to form
     document.body.appendChild(gameFormDiv);
     gameFormDiv.appendChild(gameFormTitle);
+    gameFormDiv.appendChild(gameForm);
+    gameForm.appendChild(nameLabelField);
+    gameForm.appendChild(nameField);
+    gameForm.appendChild(categoryLabelField)
+    gameForm.appendChild(categoryField);
+    gameForm.appendChild(submitBtn);
 }
 
 
