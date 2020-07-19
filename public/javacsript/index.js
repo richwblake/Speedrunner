@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", main())
 
 function main () {
     setUpLandingPage();
-    api.getSplitObjectFromFetch("splits/1")
 }
 
 // call this function with a get request url to append a game in db to the DOM
@@ -103,10 +102,10 @@ function listenForGameFormSubmit(form) {
         event.preventDefault();
         const name = event.target["game-form-name"].value;
         const category = event.target["game-form-category"].value;
-        game = new Game(name, category);
         
-        api.postData("/games", game)
-        .then(game.appendGameObject())
+        api.postData("/games", new Game(name, category))
+        .then(data => data.json())
+        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
 
 
         removeGameForm();

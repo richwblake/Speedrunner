@@ -1,5 +1,6 @@
 class Game {
-    constructor(name, category) {
+    constructor(name, category, id = undefined) {
+        this.id = id;
         this.name = name;
         this.category = category;
     }
