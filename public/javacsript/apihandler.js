@@ -18,14 +18,14 @@ class APIHandler {
         .then(json => console.log(new Split(json.title)))
     }
 
-    postGameData(game) {
-        const response = fetch(`${this.url}/games`, {
+    postData(url, data) {
+        const response = fetch(`${this.url}/${url}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(game) 
+            body: JSON.stringify(data) 
         })
         return response;
     }

@@ -105,9 +105,9 @@ function listenForGameFormSubmit(form) {
         const category = event.target["game-form-category"].value;
         game = new Game(name, category);
         
-        api.postGameData(game)
-        .then(data => data.json())
-        .then(json => game.appendGameObject())
+        api.postData("/games", game)
+        .then(game.appendGameObject())
+
 
         removeGameForm();
     })
