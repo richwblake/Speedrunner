@@ -13,6 +13,11 @@ class APIHandler {
         .then(json => new Game(json.name, json.category).appendGameObject());
     }
 
+    getSplitObjectFromFetch(url) {
+        this.fetchGame(url)
+        .then(json => console.log(new Split(json.title)))
+    }
+
     postGameData(game) {
         const response = fetch(`${this.url}/games`, {
             method: "POST",

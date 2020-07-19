@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", main())
 
 function main () {
     setUpLandingPage();
+    api.getSplitObjectFromFetch("splits/1")
 }
 
 // call this function with a get request url to append a game in db to the DOM
