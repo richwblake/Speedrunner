@@ -16,6 +16,14 @@ function removeCurrentGame() {
     currentGame.parentElement.removeChild(currentGame);
 }
 
+function removeGameForm() {
+    const gameForm = document.getElementById("game-form");
+    const gameFormDiv = gameForm.parentElement;
+
+    gameForm.remove();
+    gameFormDiv.remove();
+}
+
 function setUpLandingPage() {
     const btn = makeGameCreateButton();
     btn.addEventListener("click", () => makeGameForm())
@@ -99,6 +107,8 @@ function listenForGameFormSubmit(form) {
         api.postGameData(game)
         .then(data => data.json())
         .then(json => game.appendGameObject())
+
+        removeGameForm();
     })
 }
 
