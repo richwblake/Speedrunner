@@ -3,9 +3,6 @@ document.addEventListener("DOMContentLoaded", main())
 
 function main () {
     setUpLandingPage();
-    api.postGameData(new Game({name: "COD", category: "Shooter"}))
-    .then(data => data.json())
-    .then(json => console.log(json))
 }
 
 // call this function with a get request url to append a game in db to the DOM
@@ -20,14 +17,32 @@ function removeCurrentGame() {
 }
 
 function setUpLandingPage() {
-    makeGameCreateButton();
+    const btn = makeGameCreateButton();
+    btn.addEventListener("click", () => makeGameForm())
 }
 
 function makeGameCreateButton() {
-    let btn = document.createElement("button");
+    const btn = document.createElement("button");
     btn.id = "create-game-btn";
     btn.innerHTML = "Create a Game";
     document.body.appendChild(btn);
+    return btn;
+}
+
+function makeGameForm() {
+    gameFormDiv = document.createElement("div");
+    gameFormDiv.id = "game-form";
+
+    gameFormTitle = document.createElement("h3");
+    gameFormTitle.id = "game-form-title";
+    gameFormTitle.innerHTML = "Create your game here"
+
+
+
+    
+    document.getElementById("create-game-btn").remove();
+    document.body.appendChild(gameFormDiv);
+    gameFormDiv.appendChild(gameFormTitle);
 }
 
 
