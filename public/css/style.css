@@ -23,8 +23,7 @@ html {
 }
 
 #game-name {
-    margin-top: 0;
-    border-bottom: solid whitesmoke 1px;
+    margin: 0;
 }
 
 .game-form {
