@@ -3,11 +3,14 @@ document.addEventListener("DOMContentLoaded", main())
 
 function main () {
     setUpLandingPage();
+    api.postGameData(new Game({name: "COD", category: "Shooter"}))
+    .then(data => data.json())
+    .then(json => console.log(json))
 }
 
 // call this function with a get request url to append a game in db to the DOM
 function setUpGameView(url) {
-    api.makeGameObjectFromFetch(url);
+    api.getGameObjectFromFetch(url);
 }
 
 function removeCurrentGame() {

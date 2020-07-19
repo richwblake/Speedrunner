@@ -8,8 +8,20 @@ class APIHandler {
         .then(response => response.json())
     }
 
-    makeGameObjectFromFetch(url) {
+    getGameObjectFromFetch(url) {
         this.fetchGame(url)
         .then(json => new Game(json.name, json.category).appendGameObject());
+    }
+
+    postGameData(game) {
+        const response = fetch(`${this.url}/games`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(game) 
+        })
+        return response;
     }
 }
