@@ -96,6 +96,12 @@ function makeGameForm() {
     listenForGameFormSubmit(gameForm);
 }
 
+function makeSplitForm() {
+    // create div for splits
+    const splitFormDiv = document.createElement("div");
+    splitFormDiv.id = "split-form-div";
+}
+
 //listens for post request for form. takes submit button of form in question
 function listenForGameFormSubmit(form) {
     form.addEventListener("submit", (event) => {
@@ -109,7 +115,6 @@ function listenForGameFormSubmit(form) {
 
 
         removeGameForm();
-        return game.then(data => data)
     })
 }
 
