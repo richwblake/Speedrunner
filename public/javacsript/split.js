@@ -5,14 +5,14 @@ class Split {
 
     createTitleForSplit() {
         const splitTitle = document.createElement("h3");
-        splitTitle.id = "split-title";
+        splitTitle.id = `title-${this.title}`;
         splitTitle.innerHTML = this.title;
         return splitTitle;
     }
 
     appendSplit() {
         const splitTitle = this.createTitleForSplit();
-        document.parentElement.appendChild(splitTitle);
+        document.getElementById("splits-div").appendChild(splitTitle);
         return this;
     }
 

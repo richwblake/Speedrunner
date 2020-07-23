@@ -111,7 +111,11 @@ function handleSplitsSubmission() {
 
         // send split info from form data to splits create action
         api.postData("splits", formData)
-        .then(json => console.log(json))
+        .then(json => json.splits.forEach(split => {
+            new Split(split.title).appendSplit();
+        }))
+
+        removeForm("split-form")
 
     })
 }
