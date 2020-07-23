@@ -29,6 +29,14 @@ html {
     margin-bottom: 15px;
 }
 
+#game-name {
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px auto;
+    margin-bottom: 15px;
+}
+
 .game-form-labels {
     color: whitesmoke;
     font-size: x-large;
