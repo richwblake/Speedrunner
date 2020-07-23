@@ -13,7 +13,10 @@ function listenForGameFormSubmit() {
         const category = event.target["game-form-category"].value;
         
         api.postData("/games", new Game(name, category))
-        .then(json => new Game(json.name, json.category, json.id))
+        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
+
+        removeGameForm();
+        makeSplitForm();
     })
 }
 
@@ -25,21 +28,42 @@ function removeCurrentGame() {
 
 function removeGameForm() {
     const gameForm = document.getElementById("game-form");
-    const gameFormDiv = gameForm.parentElement;
-
     gameForm.remove();
-    gameFormDiv.remove();
-    makeSplitForm();
 }
 
 function makeSplitForm() {
     // create div for splits
-    console.log("split form called")
-    const splitFormDiv = document.createElement("div");
-    splitFormDiv.id = "split-form-div";
-    
-    const gameDiv = document.getElementById("game-div");
-    gameDiv.appendChild(splitFormDiv);
+    const splitForm = document.createElement("form");
+    splitForm.id = "split-form";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.setAttribute("for", "split-title");
+    titleLabel.innerHTML = "Title:";
+
+    const title = document.createElement("input");
+    title.id = "split-title";
+    title.type = "text";
+    title.placeholder = "e.g. 'First Boss'";
+
+    const submit = document.createElement("button");
+    submit.id = "create-split-button"
+    submit.type = "submit";
+    submit.value = "Create split";
+
+    splitForm.appendChild(titleLabel);
+    splitForm.appendChild(title);
+    splitForm.appendChild(submit);
+
+    const splitDiv = document.getElementById("splits-div");
+    splitDiv.appendChild(splitForm);
+
+    handleSplitCreation();
+}
+
+function handleSplitCreation() {
+    document.getElementById("split-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+    })
 }
 
 
