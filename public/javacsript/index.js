@@ -12,10 +12,10 @@ function listenForGameFormSubmit() {
         const name = event.target["game-form-name"].value;
         const category = event.target["game-form-category"].value;
         
-        api.postData("/games", new Game(name, category))
+        api.postData("games", new Game(name, category))
         .then(json => new Game(json.name, json.category, json.id).appendGameObject())
 
-        removeGameForm();
+        removeForm("game-form");
         makeSplitForm();
     })
 }
@@ -26,8 +26,8 @@ function removeCurrentGame() {
     currentGame.parentElement.removeChild(currentGame);
 }
 
-function removeGameForm() {
-    const gameForm = document.getElementById("game-form");
+function removeForm(formID) {
+    const gameForm = document.getElementById(formID);
     gameForm.remove();
 }
 
@@ -96,7 +96,21 @@ function handleNewSplitCreation() {
 function handleSplitsSubmission() {
     document.getElementById("split-form").addEventListener("submit", (event) => {
         event.preventDefault();
+        const target = event.target;
+        const formData = {};
         
+        // iterate through form and gather all split title values
+        // filters out button values that equal empty string
+        for (let i = 0; i < target.length; i++) {
+            if (target[i].value !== "") {
+                formData[`split${i + 1}`] = target[i].value;
+            }
+        }
+
+        // send split info from form data to splits create action
+        api.postData("splits", formData)
+        .then(json => console.log(json))
+
     })
 }
 
