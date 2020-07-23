@@ -37,23 +37,25 @@ function makeSplitForm() {
     splitForm.id = "split-form";
 
     const titleLabel = document.createElement("label");
+    titleLabel.className = "split-labels";
     titleLabel.setAttribute("for", "split-title");
     titleLabel.innerHTML = "Title:";
 
     const title = document.createElement("input");
-    title.id = "split-title";
+    title.id = "split-title-1";
+    title.className = "split-titles";
     title.type = "text";
-    title.placeholder = "e.g. 'First Boss'";
+    title.placeholder = "e.g. 'Boss #1'";
 
     const addSplit = document.createElement("button");
     addSplit.id = "add-split-btn";
     addSplit.type = "button";
-    addSplit.value = "Add another split";
+    addSplit.textContent = "Add another split";
 
     const submit = document.createElement("button");
     submit.id = "submit-splits-btn"
     submit.type = "submit";
-    submit.value = "Submit Splits";
+    submit.textContent = "Submit Splits";
 
     splitForm.appendChild(titleLabel);
     splitForm.appendChild(title);
@@ -63,13 +65,38 @@ function makeSplitForm() {
     const splitDiv = document.getElementById("splits-div");
     splitDiv.appendChild(splitForm);
 
-    handleSplitCreation();
+    handleNewSplitCreation();
+    handleSplitsSubmission();
 }
 
-function handleSplitCreation() {
+function handleNewSplitCreation() {
+    let splitCounter = 1;
+    document.getElementById("add-split-btn").addEventListener("click", () => {
+        splitCounter += 1;
+        const splitForm = document.getElementById("split-form");
+        const addSplitBtn = document.getElementById("add-split-btn");
+
+        const titleLabel = document.createElement("label");
+        titleLabel.className = "split-labels"
+        titleLabel.setAttribute("for", "split-title");
+        titleLabel.innerHTML = "Title:";
+
+        const title = document.createElement("input");
+        title.id = `split-title-${splitCounter.toString(10)}`;
+        title.className = "split-titles"
+        title.type = "text";
+        title.placeholder = `e.g. 'Boss #${splitCounter.toString(10)}'`;
+
+        splitForm.insertBefore(title, addSplitBtn);
+        splitForm.insertBefore(titleLabel, title);
+
+    })
+}
+
+function handleSplitsSubmission() {
     document.getElementById("split-form").addEventListener("submit", (event) => {
         event.preventDefault();
-
+        
     })
 }
 
