@@ -13,7 +13,7 @@ function listenForGameFormSubmit() {
         const category = event.target["game-form-category"].value;
         
         api.postData("games", new Game(name, category))
-        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
+        .then(json => new Game(json.name, json.category).appendGameObject())
 
         removeForm("game-form");
         makeSplitForm();
@@ -97,13 +97,15 @@ function handleSplitsSubmission() {
     document.getElementById("split-form").addEventListener("submit", (event) => {
         event.preventDefault();
         const target = event.target;
-        const formData = {};
+
+        // create form data object to be sent to splits POST. Add game name to associate game to splits in POST action
+        const formData = { "gameName": document.getElementById("game-name").innerHTML, "splits": {} };
         
         // iterate through form and gather all split title values
         // filters out button values that equal empty string
         for (let i = 0; i < target.length; i++) {
             if (target[i].value !== "") {
-                formData[`split${i + 1}`] = target[i].value;
+                formData["splits"][`split${i + 1}`] = target[i].value;
             }
         }
 
