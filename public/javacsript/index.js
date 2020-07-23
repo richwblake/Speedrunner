@@ -45,13 +45,19 @@ function makeSplitForm() {
     title.type = "text";
     title.placeholder = "e.g. 'First Boss'";
 
+    const addSplit = document.createElement("button");
+    addSplit.id = "add-split-btn";
+    addSplit.type = "button";
+    addSplit.value = "Add another split";
+
     const submit = document.createElement("button");
-    submit.id = "create-split-button"
+    submit.id = "submit-splits-btn"
     submit.type = "submit";
-    submit.value = "Create split";
+    submit.value = "Submit Splits";
 
     splitForm.appendChild(titleLabel);
     splitForm.appendChild(title);
+    splitForm.appendChild(addSplit);
     splitForm.appendChild(submit);
 
     const splitDiv = document.getElementById("splits-div");
@@ -63,6 +69,7 @@ function makeSplitForm() {
 function handleSplitCreation() {
     document.getElementById("split-form").addEventListener("submit", (event) => {
         event.preventDefault();
+
     })
 }
 
