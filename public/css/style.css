@@ -14,6 +14,7 @@ html {
 }
 
 #game-form {
+    background-color: #1C4B46;
     margin: 15px auto;
     padding: 20px;
     width: 45%;
@@ -39,4 +40,39 @@ html {
 
 #game-form-submit {
     font-size: medium;
+}
+
+#split-form {
+    background-color: #1C4B46;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    width: 45%;
+    text-align: center; 
+    border: 1px dashed whitesmoke;
+    border-radius: 10px;
+}
+
+.split-labels {
+    display: block;
+    color: whitesmoke;
+    font-size: x-large;
+    margin-bottom: 5px;
+}
+
+.split-titles {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 40%;
+}
+
+#add-split-btn {
+    margin-top: 5px;
+    margin-right: 2px;
+}
+
+#submit-splits-btn {
+    margin-top: 5px;
+    margin-left: 2px;
 }
