@@ -1,6 +1,6 @@
 html {
     background-color: darkslategray;
-    width: 75%;
+    width: 60%;
     margin: auto;
 }
 
@@ -13,30 +13,30 @@ html {
     padding: 5px;
 }
 
+#game-form {
+    margin: 15px auto;
+    padding: 20px;
+    width: 45%;
+    text-align: center; 
+    border: 1px dashed whitesmoke;
+    border-radius: 10px;
+}
 
-
-#game-name {
+#game-form-title {
+    color: whitesmoke;
     margin: 0;
+    margin-bottom: 15px;
 }
 
-
-.game-form-input {
-    width: 150px;
-    height: 12px;
-    resize: none;
-    display: block;
-    margin: 10px auto;
+.game-form-labels {
+    color: whitesmoke;
+    font-size: x-large;
 }
 
-.new-game-btn {
-    display: block;
-    text-align: center;
-    margin: 10px auto;
-    color: black;
-    font-size: 15px;
-    width: 25%;
+.game-form-fields {
+    width: 40%;
 }
 
-.split-titles {
-    display: block;
+#game-form-submit {
+    font-size: medium;
 }
