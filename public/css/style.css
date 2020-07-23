@@ -13,25 +13,12 @@ html {
     padding: 5px;
 }
 
-#game-div {
-    background-color: black;
-    color: whitesmoke;
-    margin: 20px auto;
-    border: solid whitesmoke 1px;
-    text-align: center;
-    width: 50%;
-}
+
 
 #game-name {
     margin: 0;
 }
 
-.game-form {
-    color: whitesmoke;
-    display: block;
-    margin: 10px auto;
-    text-align: center;
-}
 
 .game-form-input {
     width: 150px;

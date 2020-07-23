@@ -10,7 +10,7 @@ class APIHandler {
 
     getGameObjectFromFetch(url) {
         this.fetchGame(url)
-        .then(json => new Game(json.name, json.category).appendGameObject());
+        .then(json => console.log(json));
     }
 
     getSplitObjectFromFetch(url) {

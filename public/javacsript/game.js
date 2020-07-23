@@ -23,8 +23,9 @@ class Game {
     }
     
     appendGameObject() {
-        const gameDivCard = this.createDivForGame();
-        document.body.appendChild(gameDivCard);
+        const gameDiv = document.getElementById("game-div");
+        const h1 = this.createH1ForName();
+        gameDiv.appendChild(h1);
         return this;
     }
 }

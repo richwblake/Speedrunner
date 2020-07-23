@@ -1,13 +1,24 @@
-const api = new APIHandler;
 document.addEventListener("DOMContentLoaded", main())
+const api = new APIHandler;
 
 function main () {
-    setUpLandingPage();
+    listenForGameFormSubmit();
 }
 
-// call this function with a get request url to append a game in db to the DOM
-function setUpGameView(url) {
-    api.getGameObjectFromFetch(url);
+//listens for post request for form. takes submit button of form in question
+function listenForGameFormSubmit(form) {
+    document.getElementById("game-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = event.target["game-form-name"].value;
+        const category = event.target["game-form-category"].value;
+        
+        api.postData("/games", new Game(name, category))
+        .then(data => data.json())
+        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
+
+
+        removeGameForm();
+    })
 }
 
 function removeCurrentGame() {
@@ -22,102 +33,18 @@ function removeGameForm() {
 
     gameForm.remove();
     gameFormDiv.remove();
-}
-
-function setUpLandingPage() {
-    const btn = makeGameCreateButton();
-    btn.addEventListener("click", () => makeGameForm())
-}
-
-function makeGameCreateButton() {
-    const btn = document.createElement("button");
-    btn.className = "new-game-btn";
-    btn.id = "new-game-btn"
-    btn.innerHTML = "Create a Game";
-    document.body.appendChild(btn);
-    return btn;
-}
-
-function makeGameForm() {
-    //create game form div
-    const gameFormDiv = document.createElement("div");
-    gameFormDiv.id = "game-form-div";
-
-    //create title for game form
-    const gameFormTitle = document.createElement("h2");
-    gameFormTitle.id = "game-form-title";
-    gameFormTitle.className = "game-form"
-    gameFormTitle.innerHTML = "&#x2193 Create your game here &#x2193"
-
-    //create game form
-    const gameForm = document.createElement("form");
-    gameForm.id = "game-form";
-    gameForm.className = "game-form";
-
-    //create game title field and label
-    const nameField = document.createElement("textarea");
-    nameField.placeholder = "e.g. 'Bloodborne'"
-    nameField.id = "game-form-name";
-    nameField.className = "game-form-input"
-
-    const nameLabelField = document.createElement("label");
-    nameLabelField.id = "game-form-label";
-    nameLabelField.setAttribute("for", "game-form-name");
-    nameLabelField.innerHTML = "Name: "
-
-    //create game category field and label
-    const categoryField = document.createElement("textarea");
-    categoryField.placeholder = "e.g. 'Spooky'"
-    categoryField.id = "game-form-category";
-    categoryField.className = "game-form-input";
-
-    const categoryLabelField = document.createElement("label");
-    categoryLabelField.id = "category-form-label";
-    categoryLabelField.setAttribute("for", "game-form-category");
-    categoryLabelField.innerHTML = "Category: "
-
-    const submitBtn = document.createElement("button");
-    submitBtn.className = "new-game-btn";
-    submitBtn.innerHTML = "Create Game"
-    
-    //remove landing page button
-    document.getElementById("new-game-btn").remove();
-
-    //append div to body and form to div. append form input elements to form
-    document.body.appendChild(gameFormDiv);
-    gameFormDiv.appendChild(gameFormTitle);
-    gameFormDiv.appendChild(gameForm);
-    gameForm.appendChild(nameLabelField);
-    gameForm.appendChild(nameField);
-    gameForm.appendChild(categoryLabelField)
-    gameForm.appendChild(categoryField);
-    gameForm.appendChild(submitBtn);
-
-    listenForGameFormSubmit(gameForm);
+    makeSplitForm();
 }
 
 function makeSplitForm() {
     // create div for splits
+    console.log("split form called")
     const splitFormDiv = document.createElement("div");
     splitFormDiv.id = "split-form-div";
+    
+    const gameDiv = document.getElementById("game-div");
+    gameDiv.appendChild(splitFormDiv);
 }
-
-//listens for post request for form. takes submit button of form in question
-function listenForGameFormSubmit(form) {
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = event.target["game-form-name"].value;
-        const category = event.target["game-form-category"].value;
-        
-        const game = api.postData("/games", new Game(name, category))
-        .then(data => data.json())
-        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
-
-
-        removeGameForm();
-    })
-}
-
 
 
 
