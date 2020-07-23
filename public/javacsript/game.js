@@ -23,6 +23,7 @@ class Game {
     }
     
     appendGameObject() {
+        console.log("called")
         const gameDiv = document.getElementById("game-div");
         const h1 = this.createH1ForName();
         gameDiv.appendChild(h1);

@@ -19,7 +19,7 @@ class APIHandler {
     }
 
     postData(url, data) {
-        const response = fetch(`${this.url}/${url}`, {
+        return fetch(`${this.url}/${url}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,6 +27,6 @@ class APIHandler {
             },
             body: JSON.stringify(data) 
         })
-        return response;
+        .then(response => response.json())
     }
 }

@@ -6,18 +6,14 @@ function main () {
 }
 
 //listens for post request for form. takes submit button of form in question
-function listenForGameFormSubmit(form) {
+function listenForGameFormSubmit() {
     document.getElementById("game-form").addEventListener("submit", (event) => {
         event.preventDefault();
         const name = event.target["game-form-name"].value;
         const category = event.target["game-form-category"].value;
         
         api.postData("/games", new Game(name, category))
-        .then(data => data.json())
-        .then(json => new Game(json.name, json.category, json.id).appendGameObject())
-
-
-        removeGameForm();
+        .then(json => new Game(json.name, json.category, json.id))
     })
 }
 
