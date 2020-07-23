@@ -6,6 +6,7 @@ class Split {
     createTitleForSplit() {
         const splitTitle = document.createElement("h3");
         splitTitle.id = `title-${this.title}`;
+        splitTitle.className = "split-title"
         splitTitle.innerHTML = this.title;
         return splitTitle;
     }

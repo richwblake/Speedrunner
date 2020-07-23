@@ -37,13 +37,13 @@ function makeSplitForm() {
     splitForm.id = "split-form";
 
     const titleLabel = document.createElement("label");
-    titleLabel.className = "split-labels";
+    titleLabel.className = "split-form-labels";
     titleLabel.setAttribute("for", "split-title");
     titleLabel.innerHTML = "Split #1";
 
     const title = document.createElement("input");
     title.id = "split-title-1";
-    title.className = "split-titles";
+    title.className = "split-form-titles";
     title.type = "text";
     title.placeholder = "e.g. 'Boss #1'";
 
@@ -77,13 +77,13 @@ function handleNewSplitCreation() {
         const addSplitBtn = document.getElementById("add-split-btn");
 
         const titleLabel = document.createElement("label");
-        titleLabel.className = "split-labels"
+        titleLabel.className = "split-form-labels"
         titleLabel.setAttribute("for", "split-title");
         titleLabel.innerHTML = `Split #${splitCounter}`;
 
         const title = document.createElement("input");
         title.id = `split-title-${splitCounter.toString(10)}`;
-        title.className = "split-titles"
+        title.className = "split-form-titles"
         title.type = "text";
         title.placeholder = `e.g. 'Boss #${splitCounter.toString(10)}'`;
 
