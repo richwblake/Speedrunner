@@ -118,7 +118,7 @@ function handleSplitsSubmission() {
         removeForm("split-form")
 
     })
-} 
+}  
 
 
 
