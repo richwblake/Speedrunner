@@ -22,8 +22,23 @@ function listenForGameFormSubmit() {
 }
 
 function buildGameIndexList() {
+    createGameListDiv();
+
     api.fetchAllGames()
-    .then(json => console.log(json))
+    .then(json => {
+        if (json.length) {
+            json.forEach(game => new Game(game.name, game.category).addGametoGameList())
+        }
+        else {
+
+        }
+    })
+}
+
+function createGameListDiv() {
+    let gameList = document.createElement("div");
+    gameList.id = "game-list-div";
+    document.body.appendChild(gameList);
 }
 
 function removeCurrentGame() {
