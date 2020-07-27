@@ -22,15 +22,11 @@ function listenForGameFormSubmit() {
 }
 
 function buildGameIndexList() {
-    createGameListDiv();
-
     api.fetchAllGames()
     .then(json => {
         if (json.length) {
+            createGameListDiv();
             json.forEach(game => new Game(game.name, game.category).addGametoGameList())
-        }
-        else {
-
         }
     })
 }
@@ -38,6 +34,12 @@ function buildGameIndexList() {
 function createGameListDiv() {
     let gameList = document.createElement("div");
     gameList.id = "game-list-div";
+
+    const gameListTitle = document.createElement("h1");
+    gameListTitle.id = "game-list-title";
+    gameListTitle.innerHTML = "Recently Created Games";
+
+    gameList.appendChild(gameListTitle);
     document.body.appendChild(gameList);
 }
 

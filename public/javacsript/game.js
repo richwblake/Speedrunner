@@ -20,7 +20,7 @@ class Game {
 
     addGametoGameList() {
         const gameListDiv = document.getElementById("game-list-div");
-        const h1 = this.createH1ForName("game-list-name");
+        const h1 = this.createH1ForName(`game-name-${this.name}`);
         gameListDiv.appendChild(h1);
     }
 }
