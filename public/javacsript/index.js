@@ -16,6 +16,7 @@ function listenForGameFormSubmit() {
         api.postData("games", new Game(name, category))
         .then(json => new Game(json.name, json.category).appendGameObject())
 
+        removeGameList();
         removeForm("game-form");
         makeSplitForm();
     })
@@ -43,9 +44,16 @@ function createGameListDiv() {
     document.body.appendChild(gameList);
 }
 
+function removeGameList() {
+    const gameListDiv = document.getElementById("game-list-div");
+    
+    if (gameListDiv) {
+        gameListDiv.parentElement.removeChild(gameListDiv);
+    }
+}
+
 function removeCurrentGame() {
     let currentGame = document.getElementById("game-div");
-    console.log(currentGame)
     currentGame.parentElement.removeChild(currentGame);
 }
 

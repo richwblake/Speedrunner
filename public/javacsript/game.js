@@ -10,6 +10,13 @@ class Game {
         h1.innerHTML = this.name;
         return h1;
     }
+
+    createH2ForName(idForGame) {
+        let h2 = document.createElement("h2");
+        h2.id = idForGame;
+        h2.innerHTML = this.name;
+        return h2;
+    }
     
     appendGameObject() {
         const gameDiv = document.getElementById("game-div");
@@ -20,8 +27,8 @@ class Game {
 
     addGametoGameList() {
         const gameListDiv = document.getElementById("game-list-div");
-        const h1 = this.createH1ForName(`game-name-${this.name}`);
-        gameListDiv.appendChild(h1);
+        const h2 = this.createH2ForName(`game-name-${this.name}`);
+        gameListDiv.appendChild(h2);
     }
 }
 

@@ -100,3 +100,15 @@ html {
     border-top: 0;
     padding: 2px;
 }
+
+#game-list-div h2 {
+    color: lightblue;
+    text-align: center;
+}
+
+#game-list-title {
+    color: whitesmoke;
+    text-decoration: underline;
+    margin: auto;
+    text-align: center;
+}

@@ -13,16 +13,6 @@ class APIHandler {
         .then(response => response.json())
     }
 
-    getGameObjectFromFetch(url) {
-        this.fetchGame(url)
-        .then(json => console.log(json));
-    }
-
-    getSplitObjectFromFetch(url) {
-        this.fetchGame(url)
-        .then(json => console.log(new Split(json.title)))
-    }
-
     postData(url, data) {
         return fetch(`${this.url}/${url}`, {
             method: "POST",
