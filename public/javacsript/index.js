@@ -1,8 +1,9 @@
-document.addEventListener("DOMContentLoaded", main())
 const api = new APIHandler;
+document.addEventListener("DOMContentLoaded", main())
 
 function main () {
     listenForGameFormSubmit();
+    buildGameIndexList();
 }
 
 //listens for post request for form. takes submit button of form in question
@@ -21,7 +22,8 @@ function listenForGameFormSubmit() {
 }
 
 function buildGameIndexList() {
-    
+    api.fetchAllGames()
+    .then(json => console.log(json))
 }
 
 function removeCurrentGame() {

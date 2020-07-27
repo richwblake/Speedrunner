@@ -9,7 +9,8 @@ class APIHandler {
     }
 
     fetchAllGames() {
-        
+        return fetch(`${this.url}/games`)
+        .then(response => response.json())
     }
 
     getGameObjectFromFetch(url) {
