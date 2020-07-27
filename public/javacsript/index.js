@@ -115,10 +115,12 @@ function handleSplitsSubmission() {
             new Split(split.title).appendSplit();
         }))
 
-        removeForm("split-form")
-
+        removeForm("split-form");
     })
-}  
+}
+
+
+
 
 
 
