@@ -20,6 +20,10 @@ function listenForGameFormSubmit() {
     })
 }
 
+function buildGameIndexList() {
+    
+}
+
 function removeCurrentGame() {
     let currentGame = document.getElementById("game-div");
     console.log(currentGame)

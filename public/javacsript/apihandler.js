@@ -8,6 +8,10 @@ class APIHandler {
         .then(response => response.json())
     }
 
+    fetchAllGames() {
+        
+    }
+
     getGameObjectFromFetch(url) {
         this.fetchGame(url)
         .then(json => console.log(json));
