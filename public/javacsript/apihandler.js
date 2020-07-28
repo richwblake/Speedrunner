@@ -3,11 +3,6 @@ class APIHandler {
         this.url = "http://localhost:3000"
     }
 
-    fetchGame(url) {
-        return fetch(`${this.url}/${url}`)
-        .then(response => response.json())
-    }
-
     fetchAllGames() {
         return fetch(`${this.url}/games`)
         .then(response => response.json())

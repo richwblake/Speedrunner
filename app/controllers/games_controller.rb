@@ -10,10 +10,7 @@ class GamesController < ApplicationController
     end
 
     def create
-        game = Game.new()
-        game.name = params[:name]
-        game.category = params[:category]
-        game.save!
+        game = Game.create(game_parameters)
         render json: game
     end
 
