@@ -22,4 +22,4 @@ class GamesController < ApplicationController
     def game_parameters
         params.require(:game).permit(:name, :category)
     end
-end
+end 

@@ -24,4 +24,4 @@ class APIHandler {
         })
         .then(response => response.json())
     }
-}
+} 

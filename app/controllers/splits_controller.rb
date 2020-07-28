@@ -12,4 +12,4 @@ class SplitsController < ApplicationController
         end
         render json: {name: game.name, category: game.category, splits: game.splits }
     end
-end 
+end  
