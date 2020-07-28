@@ -52,11 +52,6 @@ function removeGameList() {
     }
 }
 
-function removeCurrentGame() {
-    let currentGame = document.getElementById("game-div");
-    currentGame.parentElement.removeChild(currentGame);
-}
-
 function removeForm(formID) {
     const gameForm = document.getElementById(formID);
     gameForm.remove();
