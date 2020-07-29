@@ -3,11 +3,6 @@ class APIHandler {
         this.url = "http://localhost:3000"
     }
 
-    fetchGame(url) {
-        return fetch(`${this.url}/${url}`)
-        .then(response => response.json())
-    }
-
     fetchAllGames() {
         return fetch(`${this.url}/games`)
         .then(response => response.json())
@@ -23,5 +18,17 @@ class APIHandler {
             body: JSON.stringify(data) 
         })
         .then(response => response.json())
+    }
+
+    fetchGame(gameName) {
+        return fetch(`${this.url}/games/${gameName}`)
+        .then(response => {
+            if (!response.ok) {
+                throw(Error)
+            }
+            else {
+                return response.json()
+            }
+        })
     }
 } 

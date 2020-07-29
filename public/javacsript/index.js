@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", main())
 function main () {
     listenForGameFormSubmit();
     buildGameIndexList();
+    listenForGameSearch();
 }
 
 //listens for post request for form. takes submit button of form in question
@@ -19,6 +20,26 @@ function listenForGameFormSubmit() {
         removeGameList();
         removeForm("game-form");
         makeSplitForm();
+    })
+}
+
+function listenForGameSearch() {
+    document.getElementById("game-search").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const gameName = event.target["game-search-input"].value;
+
+        api.fetchGame(gameName)
+        .then(json => {
+            new Game(json.name, json.category).appendGameObject();
+            json.splits.forEach(split => {
+                new Split(split.title).appendSplit();
+            })
+        })
+
+        removeGameList();
+        removeForm("game-form");
+        document.getElementById("game-name").remove();
+        document.getElementById("splits-div").innerHTML = "";
     })
 }
 
@@ -52,14 +73,11 @@ function removeGameList() {
     }
 }
 
-function removeCurrentGame() {
-    let currentGame = document.getElementById("game-div");
-    currentGame.parentElement.removeChild(currentGame);
-}
-
 function removeForm(formID) {
     const gameForm = document.getElementById(formID);
-    gameForm.remove();
+    if (gameForm) {
+        gameForm.remove();
+    }
 }
 
 function makeSplitForm() {
