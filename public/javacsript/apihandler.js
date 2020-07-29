@@ -19,4 +19,16 @@ class APIHandler {
         })
         .then(response => response.json())
     }
+
+    fetchGame(gameName) {
+        return fetch(`${this.url}/games/${gameName}`)
+        .then(response => {
+            if (!response.ok) {
+                throw(Error)
+            }
+            else {
+                return response.json()
+            }
+        })
+    }
 } 

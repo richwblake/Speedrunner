@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     end
     
     def show
-        game = Game.find_by(id: params[:id])
+        game = Game.find_by(name: params[:name])
         render json:  { id: game.id, name: game.name, category: game.category, splits: game.splits }
     end
 
